@@ -1,0 +1,35 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: fraud-watcher
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: fraud-watcher
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+# Thresholds for the domain fraud rules — bound to FraudRulesProperties and
+# handed to the (plain Java, framework-free) rule objects in
+# FraudRulesConfiguration. Tune these without touching any Java code.
+fraud:
+  rules:
+    high-amount-threshold: 1000000
+    velocity-max-count: 5
+    velocity-window-seconds: 60
+
+logging:
+  level:
+    com.bankstream: INFO

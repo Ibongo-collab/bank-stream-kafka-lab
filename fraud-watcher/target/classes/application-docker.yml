@@ -1,0 +1,7 @@
+# Activated with SPRING_PROFILES_ACTIVE=docker. Kafka consumer group /
+# bootstrap servers config will land here once we wire the inbound Kafka
+# adapter together — this service will run in its OWN consumer group so
+# it receives an independent copy of every transaction event (fan-out),
+# distinct from balance-consumer's group.
+server:
+  port: 8083

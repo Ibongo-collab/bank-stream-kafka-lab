@@ -1,0 +1,5 @@
+# Activated with SPRING_PROFILES_ACTIVE=docker when running via docker-compose.
+# Nothing environment-specific yet — kept as the place Kafka bootstrap
+# servers / topic names will land once we wire that adapter together.
+server:
+  port: 8081

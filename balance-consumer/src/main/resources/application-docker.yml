@@ -1,0 +1,5 @@
+# Activated with SPRING_PROFILES_ACTIVE=docker. Kafka consumer group /
+# bootstrap servers config will land here once we wire the inbound Kafka
+# adapter together.
+server:
+  port: 8082

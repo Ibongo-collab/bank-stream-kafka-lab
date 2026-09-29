@@ -1,0 +1,30 @@
+## Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+## Java
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+## IDE
+.idea/
+*.iml
+.vscode/
+out/
+
+## Env
+.env
+.env.local
+
+## OS
+.DS_Store
+
+## Logs
+*.log
+
+## Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
