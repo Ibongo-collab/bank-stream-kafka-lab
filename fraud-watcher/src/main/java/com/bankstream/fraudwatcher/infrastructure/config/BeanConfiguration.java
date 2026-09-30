@@ -1,8 +1,8 @@
 package com.bankstream.fraudwatcher.infrastructure.config;
 
 import com.bankstream.fraudwatcher.application.FraudDetectionService;
-import com.bankstream.fraudwatcher.domain.port.out.FraudAlertRepositoryPort;
-import com.bankstream.fraudwatcher.domain.port.out.TransactionHistoryPort;
+import com.bankstream.fraudwatcher.application.port.out.FraudAlertRepositoryPort;
+import com.bankstream.fraudwatcher.application.port.out.TransactionHistoryPort;
 import com.bankstream.fraudwatcher.domain.rules.FraudRule;
 import com.bankstream.fraudwatcher.infrastructure.adapter.out.persistence.InMemoryFraudAlertRepositoryAdapter;
 import com.bankstream.fraudwatcher.infrastructure.adapter.out.persistence.InMemoryTransactionHistoryAdapter;

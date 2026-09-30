@@ -1,16 +1,19 @@
 package com.bankstream.balanceconsumer.application;
 
+import com.bankstream.balanceconsumer.domain.exception.BalanceNotFoundException;
 import com.bankstream.balanceconsumer.domain.model.AccountId;
 import com.bankstream.balanceconsumer.domain.model.Balance;
 import com.bankstream.balanceconsumer.domain.model.Money;
-import com.bankstream.balanceconsumer.domain.port.in.ApplyTransactionCommand;
-import com.bankstream.balanceconsumer.domain.port.in.ApplyTransactionUseCase;
-import com.bankstream.balanceconsumer.domain.port.in.GetBalanceUseCase;
-import com.bankstream.balanceconsumer.domain.port.out.BalanceRepositoryPort;
+import com.bankstream.balanceconsumer.application.port.in.ApplyTransactionCommand;
+import com.bankstream.balanceconsumer.application.port.in.ApplyTransactionUseCase;
+import com.bankstream.balanceconsumer.application.port.in.GetBalanceUseCase;
+import com.bankstream.balanceconsumer.application.port.out.BalanceRepositoryPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.Currency;
 
+@Service
 @RequiredArgsConstructor
 public final class BalanceService implements ApplyTransactionUseCase, GetBalanceUseCase {
 
@@ -31,6 +34,6 @@ public final class BalanceService implements ApplyTransactionUseCase, GetBalance
     @Override
     public Balance getBalance(AccountId accountId) {
         return balanceRepository.findByAccountId(accountId)
-                .orElseThrow(() -> new com.bankstream.balanceconsumer.domain.exception.BalanceNotFoundException(accountId));
+                .orElseThrow(() -> new BalanceNotFoundException(accountId));
     }
 }

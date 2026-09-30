@@ -5,14 +5,7 @@ import java.time.Instant;
 import java.util.Currency;
 import java.util.Objects;
 
-/**
- * The aggregate this whole service exists to maintain. Immutable by
- * design: applying a transaction produces a new {@code Balance} rather
- * than mutating this one — which is what makes
- * {@link #applyTransaction(TransactionType, Money)} trivially unit
- * testable and safe to call concurrently without synchronization tricks
- * (the caller/repository owns the compare-and-swap).
- */
+
 public record Balance(AccountId accountId, Money amount, Instant lastUpdatedAt) {
 
     public Balance {

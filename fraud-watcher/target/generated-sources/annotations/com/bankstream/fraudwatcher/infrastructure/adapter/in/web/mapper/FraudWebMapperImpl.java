@@ -2,7 +2,7 @@ package com.bankstream.fraudwatcher.infrastructure.adapter.in.web.mapper;
 
 import com.bankstream.fraudwatcher.domain.model.AccountId;
 import com.bankstream.fraudwatcher.domain.model.TransactionType;
-import com.bankstream.fraudwatcher.domain.port.in.EvaluateTransactionCommand;
+import com.bankstream.fraudwatcher.application.port.in.EvaluateTransactionCommand;
 import com.bankstream.fraudwatcher.infrastructure.adapter.in.web.dto.EvaluateTransactionRequest;
 import java.math.BigDecimal;
 import java.util.UUID;

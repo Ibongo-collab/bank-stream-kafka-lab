@@ -2,8 +2,8 @@ package com.bankstream.balanceconsumer.infrastructure.adapter.in.web;
 
 import com.bankstream.balanceconsumer.domain.model.AccountId;
 import com.bankstream.balanceconsumer.domain.model.Balance;
-import com.bankstream.balanceconsumer.domain.port.in.ApplyTransactionUseCase;
-import com.bankstream.balanceconsumer.domain.port.in.GetBalanceUseCase;
+import com.bankstream.balanceconsumer.application.port.in.ApplyTransactionUseCase;
+import com.bankstream.balanceconsumer.application.port.in.GetBalanceUseCase;
 import com.bankstream.balanceconsumer.infrastructure.adapter.in.web.dto.ApplyTransactionRequest;
 import com.bankstream.balanceconsumer.infrastructure.adapter.in.web.dto.BalanceResponse;
 import com.bankstream.balanceconsumer.infrastructure.adapter.in.web.mapper.BalanceWebMapper;

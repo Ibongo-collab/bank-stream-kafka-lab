@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.bankstream.balanceconsumer.domain.model.AccountId;
 import com.bankstream.balanceconsumer.domain.model.Balance;
 import com.bankstream.balanceconsumer.domain.model.TransactionType;
-import com.bankstream.balanceconsumer.domain.port.in.ApplyTransactionCommand;
+import com.bankstream.balanceconsumer.application.port.in.ApplyTransactionCommand;
 import com.bankstream.balanceconsumer.infrastructure.adapter.out.persistence.InMemoryBalanceRepositoryAdapter;
 import java.math.BigDecimal;
 import java.util.UUID;

@@ -2,8 +2,8 @@ package com.bankstream.fraudwatcher.infrastructure.adapter.in.web;
 
 import com.bankstream.fraudwatcher.domain.model.AccountId;
 import com.bankstream.fraudwatcher.domain.model.FraudAlert;
-import com.bankstream.fraudwatcher.domain.port.in.EvaluateTransactionUseCase;
-import com.bankstream.fraudwatcher.domain.port.in.ListAlertsUseCase;
+import com.bankstream.fraudwatcher.application.port.in.EvaluateTransactionUseCase;
+import com.bankstream.fraudwatcher.application.port.in.ListAlertsUseCase;
 import com.bankstream.fraudwatcher.infrastructure.adapter.in.web.dto.EvaluateTransactionRequest;
 import com.bankstream.fraudwatcher.infrastructure.adapter.in.web.dto.FraudAlertResponse;
 import com.bankstream.fraudwatcher.infrastructure.adapter.in.web.mapper.FraudWebMapper;

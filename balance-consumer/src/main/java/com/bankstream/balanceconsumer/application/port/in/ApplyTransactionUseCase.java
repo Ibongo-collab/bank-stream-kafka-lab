@@ -1,4 +1,4 @@
-package com.bankstream.balanceconsumer.domain.port.in;
+package com.bankstream.balanceconsumer.application.port.in;
 
 import com.bankstream.balanceconsumer.domain.model.Balance;
 

@@ -7,12 +7,7 @@ import jakarta.validation.constraints.Pattern;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-/**
- * TEMPORARY inbound shape — mirrors what the Kafka listener will receive
- * on {@code transactions.completed} once that adapter exists. Exposed as
- * a REST endpoint for now purely so this service is runnable and testable
- * standalone before Kafka is wired in.
- */
+
 public record ApplyTransactionRequest(
 
         @NotNull

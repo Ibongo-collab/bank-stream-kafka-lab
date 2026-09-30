@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.bankstream.fraudwatcher.domain.model.AccountId;
 import com.bankstream.fraudwatcher.domain.model.TransactionType;
-import com.bankstream.fraudwatcher.domain.port.in.EvaluateTransactionCommand;
+import com.bankstream.fraudwatcher.application.port.in.EvaluateTransactionCommand;
 import com.bankstream.fraudwatcher.domain.rules.HighAmountRule;
 import com.bankstream.fraudwatcher.domain.rules.VelocityRule;
 import com.bankstream.fraudwatcher.infrastructure.adapter.out.persistence.InMemoryFraudAlertRepositoryAdapter;
