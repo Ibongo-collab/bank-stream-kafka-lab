@@ -1,9 +1,6 @@
 name: bankstream-kafka-lab
 
 services:
-  # --- Kafka (KRaft mode : pas de Zookeeper, le broker gère seul ses
-  #     métadonnées de cluster) — un seul broker, suffisant pour apprendre
-  #     partitions / consumer groups / offsets en local.
   kafka:
     image: apache/kafka:3.8.0
     container_name: bsk-kafka

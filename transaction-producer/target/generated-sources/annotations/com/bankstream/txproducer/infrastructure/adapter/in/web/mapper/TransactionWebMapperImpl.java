@@ -2,7 +2,7 @@ package com.bankstream.txproducer.infrastructure.adapter.in.web.mapper;
 
 import com.bankstream.txproducer.domain.model.AccountId;
 import com.bankstream.txproducer.domain.model.TransactionType;
-import com.bankstream.txproducer.domain.port.in.SubmitTransactionCommand;
+import com.bankstream.txproducer.application.port.in.SubmitTransactionCommand;
 import com.bankstream.txproducer.infrastructure.adapter.in.web.dto.SubmitTransactionRequest;
 import java.math.BigDecimal;
 import javax.annotation.processing.Generated;

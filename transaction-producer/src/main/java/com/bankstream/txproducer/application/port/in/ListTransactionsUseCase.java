@@ -1,4 +1,4 @@
-package com.bankstream.txproducer.domain.port.in;
+package com.bankstream.txproducer.application.port.in;
 
 import com.bankstream.txproducer.domain.model.AccountId;
 import com.bankstream.txproducer.domain.model.Transaction;

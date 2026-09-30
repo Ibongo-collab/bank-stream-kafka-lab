@@ -2,8 +2,8 @@ package com.bankstream.txproducer.infrastructure.adapter.in.web;
 
 import com.bankstream.txproducer.domain.model.AccountId;
 import com.bankstream.txproducer.domain.model.Transaction;
-import com.bankstream.txproducer.domain.port.in.ListTransactionsUseCase;
-import com.bankstream.txproducer.domain.port.in.SubmitTransactionUseCase;
+import com.bankstream.txproducer.application.port.in.ListTransactionsUseCase;
+import com.bankstream.txproducer.application.port.in.SubmitTransactionUseCase;
 import com.bankstream.txproducer.infrastructure.adapter.in.web.dto.SubmitTransactionRequest;
 import com.bankstream.txproducer.infrastructure.adapter.in.web.dto.TransactionResponse;
 import com.bankstream.txproducer.infrastructure.adapter.in.web.mapper.TransactionWebMapper;

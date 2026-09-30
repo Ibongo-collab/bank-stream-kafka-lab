@@ -1,8 +1,8 @@
 package com.bankstream.txproducer.infrastructure.config;
 
 import com.bankstream.txproducer.application.TransactionService;
-import com.bankstream.txproducer.domain.port.out.TransactionPublisherPort;
-import com.bankstream.txproducer.domain.port.out.TransactionRepositoryPort;
+import com.bankstream.txproducer.application.port.out.TransactionPublisherPort;
+import com.bankstream.txproducer.application.port.out.TransactionRepositoryPort;
 import com.bankstream.txproducer.infrastructure.adapter.out.persistence.InMemoryTransactionRepositoryAdapter;
 import com.bankstream.txproducer.infrastructure.adapter.out.publisher.KafkaTransactionPublisherAdapter;
 import com.bankstream.txproducer.infrastructure.adapter.out.publisher.TransactionEvent;
@@ -22,8 +22,7 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public KafkaTemplate<String, TransactionEvent> transactionkafkaTemplate(
-            ProducerFactory<String, TransactionEvent> transactionProducerFactory) {
+    public KafkaTemplate<String, TransactionEvent> transactionkafkaTemplate(ProducerFactory<String, TransactionEvent> transactionProducerFactory) {
         return new KafkaTemplate<>(transactionProducerFactory);
     }
 
