@@ -7,7 +7,6 @@ import jakarta.validation.constraints.Pattern;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-/** TEMPORARY inbound shape — mirrors the future Kafka listener's input, same as in balance-consumer. */
 public record EvaluateTransactionRequest(
 
         @NotNull

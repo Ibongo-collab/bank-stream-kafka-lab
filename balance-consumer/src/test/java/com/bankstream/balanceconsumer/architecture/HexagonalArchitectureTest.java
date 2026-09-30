@@ -8,6 +8,14 @@ import com.tngtech.archunit.core.importer.ImportOption;
 import com.tngtech.archunit.lang.ArchRule;
 import org.junit.jupiter.api.Test;
 
+/**
+ * NOTE: {@code application} is deliberately NOT held to the
+ * Spring-framework-free rule anymore — {@code BalanceService} now carries
+ * {@code @Service}, same conscious choice made for transaction-producer's
+ * {@code TransactionService} and fraud-watcher's {@code FraudDetectionService}.
+ * {@code domain} still is, and still must never depend on Spring or on
+ * infrastructure.
+ */
 class HexagonalArchitectureTest {
 
     private static final String BASE_PACKAGE = "com.bankstream.balanceconsumer";
@@ -20,14 +28,6 @@ class HexagonalArchitectureTest {
     void domainMustNotDependOnSpringFramework() {
         ArchRule rule = noClasses()
                 .that().resideInAPackage(BASE_PACKAGE + ".domain..")
-                .should().dependOnClassesThat().resideInAnyPackage("org.springframework..");
-        rule.check(classes);
-    }
-
-    @Test
-    void applicationMustNotDependOnSpringFramework() {
-        ArchRule rule = noClasses()
-                .that().resideInAPackage(BASE_PACKAGE + ".application..")
                 .should().dependOnClassesThat().resideInAnyPackage("org.springframework..");
         rule.check(classes);
     }

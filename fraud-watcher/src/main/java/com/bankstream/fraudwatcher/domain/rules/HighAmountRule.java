@@ -9,14 +9,7 @@ import java.util.Currency;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Flags any single transaction above a configured threshold. The
- * threshold is a plain constructor argument, not a Spring
- * {@code @Value} — this class has zero framework dependency and is
- * trivially unit-testable with `new HighAmountRule(...)`. Binding it to
- * {@code application.yml} is infrastructure's job
- * ({@code FraudRulesConfiguration}), not this class's.
- */
+
 public class HighAmountRule implements FraudRule {
 
     private final Money threshold;

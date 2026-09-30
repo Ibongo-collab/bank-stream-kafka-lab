@@ -8,6 +8,7 @@ import com.tngtech.archunit.core.importer.ImportOption;
 import com.tngtech.archunit.lang.ArchRule;
 import org.junit.jupiter.api.Test;
 
+
 class HexagonalArchitectureTest {
 
     private static final String BASE_PACKAGE = "com.bankstream.fraudwatcher";
@@ -20,14 +21,6 @@ class HexagonalArchitectureTest {
     void domainMustNotDependOnSpringFramework() {
         ArchRule rule = noClasses()
                 .that().resideInAPackage(BASE_PACKAGE + ".domain..")
-                .should().dependOnClassesThat().resideInAnyPackage("org.springframework..");
-        rule.check(classes);
-    }
-
-    @Test
-    void applicationMustNotDependOnSpringFramework() {
-        ArchRule rule = noClasses()
-                .that().resideInAPackage(BASE_PACKAGE + ".application..")
                 .should().dependOnClassesThat().resideInAnyPackage("org.springframework..");
         rule.check(classes);
     }

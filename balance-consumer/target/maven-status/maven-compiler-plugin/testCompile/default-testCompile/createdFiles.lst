@@ -1,0 +1,3 @@
+com\bankstream\balanceconsumer\architecture\HexagonalArchitectureTest.class
+com\bankstream\balanceconsumer\domain\BalanceTest.class
+com\bankstream\balanceconsumer\application\BalanceServiceTest.class

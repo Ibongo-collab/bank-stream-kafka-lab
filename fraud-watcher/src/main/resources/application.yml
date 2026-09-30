@@ -4,6 +4,22 @@ server:
 spring:
   application:
     name: fraud-watcher
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: fraud-watcher
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: earliest
+      properties:
+        spring.json.trusted.packages: com.bankstream.fraudwatcher.infrastructure.adapter.in.messaging
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: com.bankstream.fraudwatcher.infrastructure.adapter.in.messaging.TransactionEvent
+
+app:
+  kafka:
+    topic:
+      transactions: transactions
 
 management:
   endpoints:

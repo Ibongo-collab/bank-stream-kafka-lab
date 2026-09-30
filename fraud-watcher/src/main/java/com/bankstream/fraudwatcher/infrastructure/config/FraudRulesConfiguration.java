@@ -8,12 +8,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * Assembles the active rule set from {@link FraudRulesProperties}. Adding
- * a new rule to production is: write the domain class implementing
- * {@link FraudRule}, add one line to the list below. No other file in the
- * application changes.
- */
 @Configuration
 @EnableConfigurationProperties(FraudRulesProperties.class)
 public class FraudRulesConfiguration {

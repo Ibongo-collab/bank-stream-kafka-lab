@@ -1,8 +1,8 @@
 package com.bankstream.fraudwatcher.infrastructure.adapter.in.web.mapper;
 
+import com.bankstream.fraudwatcher.application.port.in.EvaluateTransactionCommand;
 import com.bankstream.fraudwatcher.domain.model.AccountId;
 import com.bankstream.fraudwatcher.domain.model.TransactionType;
-import com.bankstream.fraudwatcher.application.port.in.EvaluateTransactionCommand;
 import com.bankstream.fraudwatcher.infrastructure.adapter.in.web.dto.EvaluateTransactionRequest;
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-09-28T23:16:45+0000",
+    date = "2026-09-30T19:29:31+0000",
     comments = "version: 1.6.2, compiler: javac, environment: Java 25.0.3 (Eclipse Adoptium)"
 )
 @Component

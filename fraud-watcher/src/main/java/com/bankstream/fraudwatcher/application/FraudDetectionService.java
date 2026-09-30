@@ -10,19 +10,16 @@ import com.bankstream.fraudwatcher.application.port.in.ListAlertsUseCase;
 import com.bankstream.fraudwatcher.application.port.out.FraudAlertRepositoryPort;
 import com.bankstream.fraudwatcher.application.port.out.TransactionHistoryPort;
 import com.bankstream.fraudwatcher.domain.rules.FraudRule;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
-import java.util.Objects;
 
-/**
- * Runs every registered {@link FraudRule} against each incoming
- * transaction and persists whatever alerts they raise. The rule list
- * itself is injected — this class has no idea how many rules exist or
- * what they check, which is what lets
- * {@code infrastructure.config.FraudRulesConfiguration} add or remove
- * rules purely through configuration.
- */
+
+@Service
+@RequiredArgsConstructor
 public final class FraudDetectionService implements EvaluateTransactionUseCase, ListAlertsUseCase {
 
     private final List<FraudRule> rules;
@@ -30,16 +27,6 @@ public final class FraudDetectionService implements EvaluateTransactionUseCase, 
     private final TransactionHistoryPort transactionHistory;
     private final Duration velocityWindow;
 
-    public FraudDetectionService(
-            List<FraudRule> rules,
-            FraudAlertRepositoryPort alertRepository,
-            TransactionHistoryPort transactionHistory,
-            Duration velocityWindow) {
-        this.rules = Objects.requireNonNull(rules);
-        this.alertRepository = Objects.requireNonNull(alertRepository);
-        this.transactionHistory = Objects.requireNonNull(transactionHistory);
-        this.velocityWindow = Objects.requireNonNull(velocityWindow);
-    }
 
     @Override
     public List<FraudAlert> evaluate(EvaluateTransactionCommand command) {

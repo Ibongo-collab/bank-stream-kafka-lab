@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-09-30T02:31:29+0000",
-    comments = "version: 1.6.2, compiler: javac, environment: Java 21.0.12.1 (Eclipse Adoptium)"
+    date = "2026-09-30T19:29:07+0000",
+    comments = "version: 1.6.2, compiler: javac, environment: Java 25.0.3 (Eclipse Adoptium)"
 )
 @Component
 public class TransactionWebMapperImpl implements TransactionWebMapper {
