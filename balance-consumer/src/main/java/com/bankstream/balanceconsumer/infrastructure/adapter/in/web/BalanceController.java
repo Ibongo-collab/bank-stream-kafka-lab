@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Balances", description = "Query account balances and (temporarily, until Kafka is wired) apply transactions manually")
 public class BalanceController {
 
-    private final ApplyTransactionUseCase applyTransactionUseCase;
     private final GetBalanceUseCase getBalanceUseCase;
     private final BalanceWebMapper mapper;
 
@@ -35,14 +34,6 @@ public class BalanceController {
     @Operation(summary = "Get the current balance for an account")
     public BalanceResponse getBalance(@PathVariable UUID accountId) {
         Balance balance = getBalanceUseCase.getBalance(new AccountId(accountId));
-        return mapper.toResponse(balance);
-    }
-
-    @PostMapping("/apply")
-    @Operation(summary = "TEMPORARY: manually apply a transaction to a balance "
-            + "(stands in for the Kafka listener we'll add together)")
-    public BalanceResponse apply(@Valid @RequestBody ApplyTransactionRequest request) {
-        Balance balance = applyTransactionUseCase.apply(mapper.toCommand(request));
         return mapper.toResponse(balance);
     }
 }
