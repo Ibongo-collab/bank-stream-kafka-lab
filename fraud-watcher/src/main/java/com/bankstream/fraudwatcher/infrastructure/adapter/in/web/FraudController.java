@@ -27,17 +27,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Fraud", description = "Evaluate transactions against fraud rules and list raised alerts")
 public class FraudController {
 
-    private final EvaluateTransactionUseCase evaluateTransactionUseCase;
     private final ListAlertsUseCase listAlertsUseCase;
     private final FraudWebMapper mapper;
 
-    @PostMapping("/evaluate")
-    @Operation(summary = "TEMPORARY: manually evaluate a transaction against every fraud rule "
-            + "(stands in for the Kafka listener we'll add together)")
-    public List<FraudAlertResponse> evaluate(@Valid @RequestBody EvaluateTransactionRequest request) {
-        List<FraudAlert> alerts = evaluateTransactionUseCase.evaluate(mapper.toCommand(request));
-        return alerts.stream().map(mapper::toResponse).toList();
-    }
 
     @GetMapping("/alerts")
     @Operation(summary = "List every fraud alert raised so far, optionally filtered by account")
