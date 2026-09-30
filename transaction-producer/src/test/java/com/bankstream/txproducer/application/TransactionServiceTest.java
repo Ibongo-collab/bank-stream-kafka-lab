@@ -16,12 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-/**
- * Pure unit test — no {@code @SpringBootTest}, no Spring context at all.
- * That's the payoff of keeping the application layer framework-free: this
- * test runs in milliseconds and only fails when the actual business logic
- * is wrong, never because of a misconfigured bean.
- */
+
 class TransactionServiceTest {
 
     @Test
