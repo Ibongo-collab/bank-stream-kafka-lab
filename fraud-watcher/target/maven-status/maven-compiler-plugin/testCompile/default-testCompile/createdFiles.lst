@@ -1,4 +1,0 @@
-com\bankstream\fraudwatcher\domain\VelocityRuleTest.class
-com\bankstream\fraudwatcher\application\FraudDetectionServiceTest.class
-com\bankstream\fraudwatcher\domain\HighAmountRuleTest.class
-com\bankstream\fraudwatcher\architecture\HexagonalArchitectureTest.class

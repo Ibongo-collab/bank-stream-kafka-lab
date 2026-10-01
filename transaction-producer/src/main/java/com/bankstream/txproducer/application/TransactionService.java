@@ -8,6 +8,7 @@ import com.bankstream.txproducer.application.port.in.SubmitTransactionCommand;
 import com.bankstream.txproducer.application.port.in.SubmitTransactionUseCase;
 import com.bankstream.txproducer.application.port.out.TransactionPublisherPort;
 import com.bankstream.txproducer.application.port.out.TransactionRepositoryPort;
+import io.micrometer.core.instrument.MeterRegistry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ public final class TransactionService implements SubmitTransactionUseCase, ListT
 
     private final TransactionRepositoryPort transactionRepository;
     private final TransactionPublisherPort transactionPublisher;
+    private final MeterRegistry meterRegistry;
 
 
     @Override
@@ -29,6 +31,11 @@ public final class TransactionService implements SubmitTransactionUseCase, ListT
 
         Transaction saved = transactionRepository.save(transaction);
         transactionPublisher.publish(saved);
+
+        // KPI métier : nombre de transactions soumises, par type
+        // /actuator/prometheus sous le nom "transactions_submitted_total",
+        // scrapé par Prometheus, visualisable dans Grafana.
+        meterRegistry.counter("transactions.submitted", "type", command.type().name()).increment();
 
         return saved;
     }
