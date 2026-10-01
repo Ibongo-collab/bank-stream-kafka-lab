@@ -3,20 +3,31 @@ package com.bankstream.txproducer.application;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import com.bankstream.txproducer.application.port.in.SubmitTransactionCommand;
+import com.bankstream.txproducer.application.port.out.TransactionPublisherPort;
+import com.bankstream.txproducer.application.port.out.TransactionRepositoryPort;
 import com.bankstream.txproducer.domain.exception.InvalidTransactionException;
 import com.bankstream.txproducer.domain.model.AccountId;
 import com.bankstream.txproducer.domain.model.Transaction;
 import com.bankstream.txproducer.domain.model.TransactionType;
-import com.bankstream.txproducer.application.port.in.SubmitTransactionCommand;
-import com.bankstream.txproducer.application.port.out.TransactionPublisherPort;
-import com.bankstream.txproducer.application.port.out.TransactionRepositoryPort;
+
 import com.bankstream.txproducer.infrastructure.adapter.out.persistence.InMemoryTransactionRepositoryAdapter;
+import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-
+/**
+ * Pure unit test — no {@code @SpringBootTest}, no Spring context at all.
+ * That's the payoff of keeping the application layer framework-free: this
+ * test runs in milliseconds and only fails when the actual business logic
+ * is wrong, never because of a misconfigured bean.
+ *
+ * {@code SimpleMeterRegistry} is Micrometer's in-memory implementation,
+ * built exactly for this — no Prometheus, no Spring context needed to
+ * satisfy TransactionService's MeterRegistry dependency in a unit test.
+ */
 class TransactionServiceTest {
 
     @Test
@@ -25,7 +36,7 @@ class TransactionServiceTest {
         List<Transaction> published = new ArrayList<>();
         TransactionPublisherPort publisher = published::add;
 
-        TransactionService service = new TransactionService(repository, publisher);
+        TransactionService service = new TransactionService(repository, publisher, new SimpleMeterRegistry());
 
         AccountId accountId = AccountId.generate();
         SubmitTransactionCommand command = new SubmitTransactionCommand(
@@ -42,7 +53,7 @@ class TransactionServiceTest {
     @Test
     void submitRejectsANonPositiveAmount() {
         TransactionService service = new TransactionService(
-                new InMemoryTransactionRepositoryAdapter(), tx -> { });
+                new InMemoryTransactionRepositoryAdapter(), tx -> { }, new SimpleMeterRegistry());
 
         SubmitTransactionCommand command = new SubmitTransactionCommand(
                 AccountId.generate(), TransactionType.WITHDRAWAL, new BigDecimal("0.00"), "XAF");
@@ -54,7 +65,7 @@ class TransactionServiceTest {
     @Test
     void listByAccountOnlyReturnsThatAccountsTransactions() {
         TransactionRepositoryPort repository = new InMemoryTransactionRepositoryAdapter();
-        TransactionService service = new TransactionService(repository, tx -> { });
+        TransactionService service = new TransactionService(repository, tx -> { }, new SimpleMeterRegistry());
 
         AccountId accountA = AccountId.generate();
         AccountId accountB = AccountId.generate();
